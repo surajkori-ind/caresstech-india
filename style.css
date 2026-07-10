@@ -70,18 +70,38 @@ a{text-decoration:none;}
   padding:18px 0; transition:all .35s ease; background:rgba(255,255,255,0); z-index:1000;
 }
 #mainNav.solid{background:var(--white); box-shadow:0 4px 24px rgba(15,79,181,0.08); padding:10px 0;}
-/* --- Fix: keep logo + hamburger on one row on narrow Android screens --- */
+/* --- Fix: keep logo + hamburger on one row, send menu to its own row below --- */
 #mainNav .container{
   flex-wrap: nowrap;
 }
 .navbar-brand{
-  flex-shrink: 1;
-  min-width: 0;
-  overflow: hidden;
+  flex-shrink: 0;      /* logo never gets squeezed */
+  min-width: auto;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.navbar-brand img.brand-logo{
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
 }
 .navbar-toggler{
   margin-left: auto;
   flex-shrink: 0;
+}
+/* On mobile, force the opened menu onto its own full-width row instead of
+   squeezing into the same flex row as the logo + toggler */
+@media (max-width: 991.98px){
+  #mainNav .container{
+    flex-wrap: wrap;
+  }
+  #mainNav #navMenu{
+    flex-basis: 100%;
+    order: 3;
+  }
 }
 @media (max-width: 360px){
   .brand-word{ font-size: 1.05rem; }
