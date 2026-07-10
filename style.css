@@ -29,13 +29,19 @@
   --safe-r:env(safe-area-inset-right, 0px);
 }
 
-*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-html{scroll-behavior:smooth;}
+**{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html{
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+  width:100%;
+}
 body{
   font-family:'Poppins',sans-serif;
   color:var(--text-dark);
   background:var(--white);
   overflow-x:hidden;
+  width:100%;
+  position:relative;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
 }
