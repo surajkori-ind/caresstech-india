@@ -64,6 +64,23 @@ a{text-decoration:none;}
   padding:18px 0; transition:all .35s ease; background:rgba(255,255,255,0); z-index:1000;
 }
 #mainNav.solid{background:var(--white); box-shadow:0 4px 24px rgba(15,79,181,0.08); padding:10px 0;}
+/* --- Fix: keep logo + hamburger on one row on narrow Android screens --- */
+#mainNav .container{
+  flex-wrap: nowrap;
+}
+.navbar-brand{
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.navbar-toggler{
+  margin-left: auto;
+  flex-shrink: 0;
+}
+@media (max-width: 360px){
+  .brand-word{ font-size: 1.05rem; }
+  .brand-sub{ letter-spacing: 2px; font-size: .55rem; }
+}
 .brand-word{font-weight:800; font-size:1.5rem; letter-spacing:-0.5px;}
 .brand-blue{color:var(--blue);}
 .brand-orange{color:var(--orange);}
