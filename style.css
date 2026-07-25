@@ -188,6 +188,25 @@ a{text-decoration:none;}
 .hero-visual{position:relative;}
 .hero-illustration{width:100%; height:auto; filter:drop-shadow(0 20px 40px rgba(15,79,181,0.12));}
 
+.hero-photo{
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:var(--radius-lg);
+  box-shadow:0 20px 44px rgba(15,79,181,0.18);
+  position:relative;
+  z-index:2;
+}
+.hero-visual-glow{
+  position:absolute;
+  inset:-20px;
+  z-index:1;
+  background:radial-gradient(400px 300px at 70% 30%, rgba(255,138,0,0.15), transparent 70%);
+  pointer-events:none;
+}
+.hero-visual{ position:relative; }
+
 .hero-bg-graphics{position:absolute; inset:0; z-index:1; pointer-events:none;}
 .float-graphic{position:absolute; opacity:.35;}
 .g1{width:90px; top:12%; left:6%; animation:floatY 6s ease-in-out infinite;}
