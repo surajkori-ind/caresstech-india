@@ -311,8 +311,19 @@ footer hr{border-color:rgba(255,255,255,.12); margin:36px 0 18px;}
 @media (max-width:991px){
   .hero{padding:130px 0 50px;}
   .gallery-grid{columns:2 200px;}
-  #navMenu{background:#fff; margin-top:14px; padding:16px; border-radius:14px; box-shadow:var(--shadow-soft);}
-  .navbar-nav .nav-item{border-bottom:1px solid var(--cream-2);}
+   #navMenu{
+  background:#fff;
+  padding:16px;
+  border-radius:14px;
+  box-shadow:var(--shadow-soft);
+  position:absolute;
+  top:calc(100% + 8px);
+  left:0;
+  right:0;
+  width:100%;
+  z-index:999;
+   }  
+   .navbar-nav .nav-item{border-bottom:1px solid var(--cream-2);}
   .navbar-nav .nav-item:last-child{border-bottom:none; margin-top:10px;}
   .btn-cta{width:100%; justify-content:center;}
   .hero-photo-main{border-radius:80px 24px 80px 24px;}
