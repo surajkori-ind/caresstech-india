@@ -1,53 +1,100 @@
-const form = document.getElementById("contactForm");
+document.addEventListener("DOMContentLoaded", () => {
 
-form.addEventListener("submit", async (e) => {
+    const form = document.getElementById("contactForm");
 
-e.preventDefault();
+    if (!form) return;
 
-const data = {};
+    const submitBtn = document.getElementById("submitBtn");
+    const successMsg = document.getElementById("formSuccess");
 
-const fd = new FormData(form);
+    form.addEventListener("submit", async function (e) {
 
-for (const [key, value] of fd.entries()) {
+        e.preventDefault();
 
-data[key] = value;
+        successMsg.style.display = "none";
 
-}
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-data.interested_in = [];
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <span class="spinner-border spinner-border-sm"></span>
+            Sending...
+        `;
 
-document.querySelectorAll(
-'input[name="interest"]:checked'
-).forEach((item)=>{
+        const formData = new FormData(form);
 
-data.interested_in.push(item.value);
+        const data = {
+            full_name: formData.get("full_name"),
+            organisation_name: formData.get("organisation_name"),
+            designation: formData.get("designation"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            city: formData.get("city"),
+            state: formData.get("state"),
+            organisation_type: formData.get("organisation_type"),
+            message: formData.get("message"),
+            website: formData.get("website"),
+            interested_in: []
+        };
 
-});
+        document
+            .querySelectorAll('input[name="interested_in"]:checked')
+            .forEach(item => {
+                data.interested_in.push(item.value);
+            });
 
-const response = await fetch("/api/contact", {
+        try {
 
-method: "POST",
+    const response = await fetch(
+    "https://caresstech.in/api/contact",
+    {
 
-headers: {
+                method: "POST",
 
-"Content-Type":"application/json"
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-},
+                body: JSON.stringify(data)
 
-body: JSON.stringify(data)
+            });
 
-});
+            const result = await response.json();
 
-if(response.ok){
+            if (response.ok && result.success) {
 
-alert("Thank you! Your enquiry has been submitted.");
+                form.reset();
 
-form.reset();
+                successMsg.style.display = "block";
 
-}else{
+                successMsg.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
 
-alert("Submission failed.");
+            } else {
 
-}
+                alert(result.message || "Submission failed.");
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Network error. Please try again.");
+
+        } finally {
+
+            submitBtn.disabled = false;
+
+            submitBtn.innerHTML = "Send Inquiry";
+
+        }
+
+    });
 
 });
