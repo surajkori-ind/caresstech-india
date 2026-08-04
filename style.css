@@ -135,7 +135,7 @@ a{text-decoration:none;}
 .ph-product{min-height:230px; border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
 .product-photo-img{
   width:100%;
-  height:67px;
+  height:150px;
   object-fit:cover;
   display:block;
   border-radius:var(--radius-lg) var(--radius-lg) 0 0;
