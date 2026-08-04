@@ -448,38 +448,220 @@
       </div>
       <div class="col-lg-7" data-aos="fade-left">
         <form id="contactForm" class="contact-form" novalidate>
-          <div class="row g-3">
-            <div class="col-md-6"><input type="text" class="form-control" placeholder="Full Name *" required></div>
-            <div class="col-md-6"><input type="text" class="form-control" placeholder="Organisation Name *" required></div>
-            <div class="col-md-6"><input type="text" class="form-control" placeholder="Designation"></div>
-            <div class="col-md-6"><input type="email" class="form-control" placeholder="Email *" required></div>
-            <div class="col-md-6"><input type="tel" class="form-control" placeholder="Phone *" required></div>
-            <div class="col-md-6"><input type="text" class="form-control" placeholder="City"></div>
-            <div class="col-md-6"><input type="text" class="form-control" placeholder="State"></div>
-            <div class="col-md-6">
-              <select class="form-select" required>
-                <option value="" selected disabled>Organisation Type *</option>
-                <option>School</option><option>NGO</option><option>CSR Foundation</option>
-                <option>College</option><option>Training Centre</option><option>Government</option><option>Other</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label class="form-label small-text">Interested In</label>
-              <div class="d-flex flex-wrap gap-3">
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int1"><label class="form-check-label" for="int1">DIY STEM Kits</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int2"><label class="form-check-label" for="int2">STEM Curriculum</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int3"><label class="form-check-label" for="int3">Digital Literacy</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int4"><label class="form-check-label" for="int4">Teacher Training</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int5"><label class="form-check-label" for="int5">Bulk Orders</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int6"><label class="form-check-label" for="int6">Partnership</label></div>
-                <div class="form-check"><input class="form-check-input" type="checkbox" id="int7"><label class="form-check-label" for="int7">Custom Kit Development</label></div>
-              </div>
-            </div>
-            <div class="col-12"><textarea class="form-control" rows="4" placeholder="Message"></textarea></div>
-            <div class="col-12"><button type="submit" class="btn btn-primary-brand w-100 w-md-auto">Send Inquiry</button></div>
-          </div>
-          <div class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i> Thank you — your inquiry has been received. We'll get back to you shortly.</div>
-        </form>
+
+  <!-- Honeypot (Anti Spam) -->
+  <input
+    type="text"
+    name="website"
+    style="display:none"
+    autocomplete="off"
+    tabindex="-1">
+
+  <div class="row g-3">
+
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        name="full_name"
+        placeholder="Full Name *"
+        required>
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        name="organisation_name"
+        placeholder="Organisation Name *"
+        required>
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        name="designation"
+        placeholder="Designation">
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        placeholder="Email *"
+        required>
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="tel"
+        class="form-control"
+        name="phone"
+        placeholder="Phone *"
+        required>
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        name="city"
+        placeholder="City">
+    </div>
+
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        name="state"
+        placeholder="State">
+    </div>
+
+    <div class="col-md-6">
+      <select
+        class="form-select"
+        name="organisation_type"
+        required>
+
+        <option value="" selected disabled>
+          Organisation Type *
+        </option>
+
+        <option value="School">School</option>
+        <option value="NGO">NGO</option>
+        <option value="CSR Foundation">CSR Foundation</option>
+        <option value="College">College</option>
+        <option value="Training Centre">Training Centre</option>
+        <option value="Government">Government</option>
+        <option value="Other">Other</option>
+
+      </select>
+    </div>
+
+    <div class="col-12">
+
+      <label class="form-label small-text">
+        Interested In
+      </label>
+
+      <div class="d-flex flex-wrap gap-3">
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int1"
+                 name="interested_in"
+                 value="DIY STEM Kits">
+          <label class="form-check-label" for="int1">
+            DIY STEM Kits
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int2"
+                 name="interested_in"
+                 value="STEM Curriculum">
+          <label class="form-check-label" for="int2">
+            STEM Curriculum
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int3"
+                 name="interested_in"
+                 value="Digital Literacy">
+          <label class="form-check-label" for="int3">
+            Digital Literacy
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int4"
+                 name="interested_in"
+                 value="Teacher Training">
+          <label class="form-check-label" for="int4">
+            Teacher Training
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int5"
+                 name="interested_in"
+                 value="Bulk Orders">
+          <label class="form-check-label" for="int5">
+            Bulk Orders
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int6"
+                 name="interested_in"
+                 value="Partnership">
+          <label class="form-check-label" for="int6">
+            Partnership
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input"
+                 type="checkbox"
+                 id="int7"
+                 name="interested_in"
+                 value="Custom Kit Development">
+          <label class="form-check-label" for="int7">
+            Custom Kit Development
+          </label>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-12">
+      <textarea
+        class="form-control"
+        name="message"
+        rows="4"
+        placeholder="Message"></textarea>
+    </div>
+
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-primary-brand w-100 w-md-auto"
+        id="submitBtn">
+
+        Send Inquiry
+
+      </button>
+    </div>
+
+  </div>
+
+  <div
+    class="form-success"
+    id="formSuccess"
+    style="display:none;">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    Thank you! Your enquiry has been received. We'll contact you shortly.
+
+  </div>
+
+</form>
       </div>
     </div>
   </div>
