@@ -210,17 +210,52 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =========================================================
      Contact form — client-side success confirmation
   ========================================================= */
-  var form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      document.getElementById('formSuccess').classList.add('show');
-      form.reset();
-      // NOTE: connect this form to your backend / form service (e.g. Formspree, EmailJS)
-      // before going live — this demo only shows a client-side confirmation.
+ var form = document.getElementById('contactForm');
+if (form) {
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbzPpDLfXAWe0okQo1_eqyUNsCrJJQmV_xxG34mCXnBN2kGe7plGQnwGi0HrFXr65JIW/exec"; // paste your Apps Script URL here
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    var submitBtn = document.getElementById('submitBtn');
+    var successBox = document.getElementById('formSuccess');
+    var errorBox = document.getElementById('formError');
+    errorBox.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    var interests = Array.from(document.querySelectorAll('.interest-check:checked'))
+                          .map(function (c) { return c.value; })
+                          .join(', ');
+
+    var f = form.elements;
+    var payload = new URLSearchParams({
+      full_name: f.full_name.value,
+      organisation_name: f.organisation_name.value,
+      designation: f.designation.value,
+      email: f.email.value,
+      phone: f.phone.value,
+      city: f.city.value,
+      state: f.state.value,
+      organisation_type: f.organisation_type.value,
+      interested_in: interests,
+      message: f.message.value
     });
-  }
+
+    try {
+      await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: payload });
+      successBox.classList.add('show');
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      errorBox.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Inquiry';
+    }
+  });
+}
 
   /* ---- Back to top ---- */
   var topBtn = document.getElementById('backToTop');
