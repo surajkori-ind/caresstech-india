@@ -256,7 +256,6 @@ if (form) {
     }
   });
 }
-
   /* ---- Back to top ---- */
   var topBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', function () {
