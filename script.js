@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ========================================================= */
  var form = document.getElementById('contactForm');
 if (form) {
-  var SHEET_URL = "https://script.google.com/macros/s/AKfycbzPpDLfXAWe0okQo1_eqyUNsCrJJQmV_xxG34mCXnBN2kGe7plGQnwGi0HrFXr65JIW/exec"; // paste your Apps Script URL here
+  var SHEET_URL = "https://script.google.com/macros/s/AKfycbw9aKHUUL6wcKxgavqky_EQIzOsdzIrx3G0A9e--reIDCdYr9qet17-NBiWyMXUFSgP/exec"; // paste your Apps Script URL here
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
