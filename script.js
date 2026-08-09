@@ -169,25 +169,37 @@ document.addEventListener('DOMContentLoaded', function () {
     ['Robotics', 'robotics', 'Walking rope robot in motion'],
     ['Innovation', 'innovation', 'Student-designed STEM solution on display']
   ];
-  var grid = document.getElementById('galleryGrid');
+var grid = document.getElementById('galleryGrid');
   if (grid) {
+    var seenCategories = {};
     var gHtml = '';
     galleryItems.forEach(function (item, i) {
-      gHtml += '<div class="gallery-item" data-filter="' + item[1] + '" data-caption="' + item[2] + '" data-aos="fade-up" data-aos-delay="' + ((i % 6) * 40) + '">' +
+      var isPrimary = !seenCategories[item[1]]; // first occurrence of each category
+      seenCategories[item[1]] = true;
+      gHtml += '<div class="gallery-item" data-filter="' + item[1] + '" data-primary="' + isPrimary + '" data-caption="' + item[2] + '" data-aos="fade-up" data-aos-delay="' + ((i % 6) * 40) + '">' +
                  '<div class="ph-card"><span>' + item[2] + '</span></div>' +
                '</div>';
     });
     grid.innerHTML = gHtml;
 
+    function applyGalleryFilter(f) {
+      if (f === 'all') { grid.classList.add('grid-mode-all'); }
+      else { grid.classList.remove('grid-mode-all'); }
+
+      document.querySelectorAll('.gallery-item').forEach(function (gi) {
+        var show = (f === 'all' && gi.dataset.primary === 'true') ||
+                   (f !== 'all' && gi.dataset.filter === f);
+        gi.classList.toggle('hidden', !show);
+      });
+    }
+
+    applyGalleryFilter('all'); // set correct layout on first load
+
     document.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        var f = btn.dataset.filter;
-        document.querySelectorAll('.gallery-item').forEach(function (gi) {
-          if (f === 'all' || gi.dataset.filter === f) { gi.classList.remove('hidden'); }
-          else { gi.classList.add('hidden'); }
-        });
+        applyGalleryFilter(btn.dataset.filter);
       });
     });
 
