@@ -155,19 +155,19 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =========================================================
      Gallery — masonry grid + filter + lightbox
   ========================================================= */
-  var galleryItems = [
-    ['DIY Kits', 'kits', 'Gravity powered car kit ready for assembly'],
-    ['Workshops', 'workshops', 'Teacher training workshop session'],
-    ['Student Activities', 'activities', 'Students testing their catapult design'],
-    ['Electronics', 'electronics', 'Breadboard circuit in progress'],
-    ['Robotics', 'robotics', 'Robotic arm prototype demonstration'],
-    ['Innovation', 'innovation', 'Students presenting their tinkering project'],
-    ['DIY Kits', 'kits', 'Paper circuit buzzer game components'],
-    ['Workshops', 'workshops', 'Hands-on group workshop activity'],
-    ['Student Activities', 'activities', 'Balancing bird experiment in class'],
-    ['Electronics', 'electronics', 'Arduino board wiring demonstration'],
-    ['Robotics', 'robotics', 'Walking rope robot in motion'],
-    ['Innovation', 'innovation', 'Student-designed STEM solution on display']
+ var galleryItems = [
+    ['DIY Kits', 'kits', 'Gravity powered car kit ready for assembly', 'gallery-kits-1.jpg'],
+    ['Workshops', 'workshops', 'Teacher training workshop session', 'gallery-workshops-1.jpg'],
+    ['Student Activities', 'activities', 'Students testing their catapult design', 'gallery-activities-1.jpg'],
+    ['Electronics', 'electronics', 'Breadboard circuit in progress', 'gallery-electronics-1.jpg'],
+    ['Robotics', 'robotics', 'Robotic arm prototype demonstration', 'gallery-robotics-1.jpg'],
+    ['Innovation', 'innovation', 'Students presenting their tinkering project', 'gallery-innovation-1.jpg'],
+    ['DIY Kits', 'kits', 'Paper circuit buzzer game components', 'gallery-kits-2.jpg'],
+    ['Workshops', 'workshops', 'Hands-on group workshop activity', 'gallery-workshops-2.jpg'],
+    ['Student Activities', 'activities', 'Balancing bird experiment in class', 'gallery-activities-2.jpg'],
+    ['Electronics', 'electronics', 'Arduino board wiring demonstration', 'gallery-electronics-2.jpg'],
+    ['Robotics', 'robotics', 'Walking rope robot in motion', 'gallery-robotics-2.jpg'],
+    ['Innovation', 'innovation', 'Student-designed STEM solution on display', 'gallery-innovation-2.jpg']
   ];
 var grid = document.getElementById('galleryGrid');
   if (grid) {
@@ -176,8 +176,8 @@ var grid = document.getElementById('galleryGrid');
     galleryItems.forEach(function (item, i) {
       var isPrimary = !seenCategories[item[1]]; // first occurrence of each category
       seenCategories[item[1]] = true;
-      gHtml += '<div class="gallery-item" data-filter="' + item[1] + '" data-primary="' + isPrimary + '" data-caption="' + item[2] + '" data-aos="fade-up" data-aos-delay="' + ((i % 6) * 40) + '">' +
-                 '<div class="ph-card"><span>' + item[2] + '</span></div>' +
+     gHtml += '<div class="gallery-item" data-filter="' + item[1] + '" data-primary="' + isPrimary + '" data-caption="' + item[2] + '" data-img="assets/images/' + item[3] + '" data-aos="fade-up" data-aos-delay="' + ((i % 6) * 40) + '">' +
+                 '<img src="assets/images/' + item[3] + '" alt="' + item[2] + '" class="gallery-photo-img" loading="lazy">' +
                '</div>';
     });
     grid.innerHTML = gHtml;
@@ -187,9 +187,9 @@ var grid = document.getElementById('galleryGrid');
       else { grid.classList.remove('grid-mode-all'); }
 
       document.querySelectorAll('.gallery-item').forEach(function (gi) {
-        var show = (f === 'all' && gi.dataset.primary === 'true') ||
-                   (f !== 'all' && gi.dataset.filter === f);
-        gi.classList.toggle('hidden', !show);
+      gi.addEventListener('click', function () {
+        lightboxContent.innerHTML = '<img src="' + gi.dataset.img + '" alt="' + gi.dataset.caption + '" class="lightbox-photo-img">';
+        lightbox.classList.add('open');
       });
     }
 
