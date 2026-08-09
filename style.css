@@ -268,6 +268,27 @@ a{text-decoration:none;}
 .filter-btn{border:2px solid var(--cream-2); background:var(--cream-2); color:var(--text-dark); padding:8px 20px; border-radius:50px; font-size:.85rem; font-weight:600; transition:.25s;}
 .filter-btn:hover, .filter-btn.active{background:var(--blue); border-color:var(--blue); color:#fff;}
 .gallery-grid{columns:4 220px; column-gap:16px;}
+
+/* "All" view: exactly 6 images, fixed grid (not masonry) */
+.gallery-grid.grid-mode-all{
+  columns: unset;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-grid.grid-mode-all .gallery-item{
+  margin-bottom: 0;
+  break-inside: auto;
+}
+.gallery-grid.grid-mode-all .ph-card{
+  min-height: 200px;
+}
+@media (max-width: 767px){
+  .gallery-grid.grid-mode-all{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .gallery-item{break-inside:avoid; margin-bottom:16px; border-radius:var(--radius-md); overflow:hidden; cursor:pointer; box-shadow:var(--shadow-soft); transition:transform .25s;}
 .gallery-item:hover{transform:translateY(-4px);}
 .gallery-item .ph-card{border-radius:var(--radius-md); min-height:160px;}
