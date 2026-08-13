@@ -270,6 +270,22 @@ if (form) {
     }
   });
 }
+
+   /* ---- Buyer type tabs ---- */
+  var buyerTabs = document.querySelectorAll('.buyer-tab');
+  var instFields = document.querySelectorAll('.institution-field');
+  buyerTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      buyerTabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      if (tab.dataset.type === 'institution') {
+        instFields.forEach(function(f) { f.classList.add('visible'); });
+      } else {
+        instFields.forEach(function(f) { f.classList.remove('visible'); });
+      }
+    });
+  });
+     
   /* ---- Back to top ---- */
   var topBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', function () {
