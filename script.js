@@ -114,9 +114,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // duplicate list for seamless loop
     [...components, ...components].forEach(function (c) {
       html += '<div class="component-card">' +
-                '<div class="comp-icon"><i class="fa-solid ' + c[2] + '"></i></div>' +
-                '<h5>' + c[0] + '</h5><p>' + c[1] + '</p>' +
-              '</div>';
+              '<div class="comp-icon"><i class="fa-solid ' + c[2] + '"></i></div>' +
+              '<h5>' + c[0] + '</h5>' +
+              '<p>' + c[1] + '</p>' +
+              '<span class="comp-available"><i class="fa-solid fa-circle-check"></i> Available</span>' +
+            '</div>';
     });
     track.innerHTML = html;
   }
