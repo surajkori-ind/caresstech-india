@@ -466,3 +466,17 @@ footer hr{border-color:rgba(255,255,255,.12); margin:36px 0 18px;}
   font-size: 0.95rem;
   color: var(--navy);
 }
+/* --- Component card — available badge --- */
+.comp-available {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #1e7e34;
+  background: #e6f4ea;
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.comp-available i { font-size: 0.65rem; }
