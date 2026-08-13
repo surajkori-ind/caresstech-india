@@ -480,3 +480,38 @@ footer hr{border-color:rgba(255,255,255,.12); margin:36px 0 18px;}
   padding: 3px 10px;
 }
 .comp-available i { font-size: 0.65rem; }
+
+/* --- Buyer type tabs --- */
+.buyer-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.buyer-tab {
+  padding: 9px 22px;
+  border: 2px solid var(--navy);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.buyer-tab.active,
+.buyer-tab:hover {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* Institution fields hidden by default */
+.institution-field { display: none; }
+.institution-field.visible { display: block; }
+
+/* --- Contact perks list --- */
+.contact-perks { display: flex; flex-direction: column; gap: 12px; }
+.perk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--navy);
+  font-weight: 500;
+}
+.perk-row i { width: 18px; text-align: center; }
