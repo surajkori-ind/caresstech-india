@@ -79,49 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  /* =========================================================
-     Electronics Component Strip (infinite scroller)
-  ========================================================= */
-  var components = [
-    ['Arduino UNO', 'Beginner-friendly microcontroller board', 'fa-microchip'],
-    ['Arduino Nano', 'Compact board for space-limited builds', 'fa-microchip'],
-    ['ESP32', 'Wi-Fi and Bluetooth enabled microcontroller', 'fa-wifi'],
-    ['Breadboard', 'Solder-free circuit prototyping board', 'fa-border-all'],
-    ['LED', 'Simple light-emitting diode for indicators', 'fa-lightbulb'],
-    ['RGB LED', 'Multi-colour LED for colour-mixing projects', 'fa-palette'],
-    ['Servo Motor', 'Precise angular position motor', 'fa-gear'],
-    ['DC Motor', 'Basic motor for continuous rotation', 'fa-fan'],
-    ['Stepper Motor', 'Motor that moves in precise steps', 'fa-compass'],
-    ['Ultrasonic Sensor', 'Measures distance using sound waves', 'fa-wave-square'],
-    ['IR Sensor', 'Detects infrared light for proximity sensing', 'fa-satellite-dish'],
-    ['LDR', 'Light-dependent resistor for light sensing', 'fa-sun'],
-    ['Relay Module', 'Switches high-power devices safely', 'fa-toggle-on'],
-    ['LCD Display', 'Character display for readouts', 'fa-tv'],
-    ['OLED Display', 'Compact high-contrast display', 'fa-display'],
-    ['Potentiometer', 'Variable resistor for analog input', 'fa-sliders'],
-    ['Push Button', 'Momentary switch for digital input', 'fa-circle-dot'],
-    ['Battery Holder', 'Portable power for standalone builds', 'fa-battery-full'],
-    ['Resistors', 'Limit current flow in a circuit', 'fa-grip-lines'],
-    ['Capacitors', 'Store and release electrical energy', 'fa-layer-group'],
-    ['Diodes', 'Allow current to flow in one direction', 'fa-arrow-right-to-bracket'],
-    ['Transistors', 'Amplify or switch electronic signals', 'fa-diagram-project'],
-    ['Jumper Wires', 'Flexible wires for quick connections', 'fa-timeline'],
-    ['Buzzer', 'Produces sound for alerts and feedback', 'fa-volume-high']
-  ];
-  var track = document.getElementById('componentTrack');
-  if (track) {
-    var html = '';
-    // duplicate list for seamless loop
-    [...components, ...components].forEach(function (c) {
-      html += '<div class="component-card">' +
-              '<div class="comp-icon"><i class="fa-solid ' + c[2] + '"></i></div>' +
-              '<h5>' + c[0] + '</h5>' +
-              '<p>' + c[1] + '</p>' +
-              '<span class="comp-available"><i class="fa-solid fa-circle-check"></i> Available</span>' +
-            '</div>';
-    });
-    track.innerHTML = html;
-  }
 
   /* =========================================================
      Curriculum language modal
